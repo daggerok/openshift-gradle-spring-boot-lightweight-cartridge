@@ -2,4 +2,8 @@
 .idea
 *.ipr
 *.iws
-gradle*
+!build
+build/*
+!build/libs
+build/libs/*
+!build/libs/*.jar
