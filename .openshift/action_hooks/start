@@ -19,14 +19,7 @@ export JAVA_HOME=$OPENSHIFT_DATA_DIR/jdk1.8.0_102
 export PATH=$JAVA_HOME/bin:$PATH
 
 cd $OPENSHIFT_REPO_DIR
-
-## needs some resources (currently build on openshift not worked, so we have to provide packaged jar...
-#bash gradlew -g /tmp -b build.gradle build -x test # testing needs additional server resources...
-
-### see src/main/resources/application.yml server.*:
-##/bin/bash $OPENSHIFT_REPO_DIR/build/libs/openshift-gradle-spring-boot-lightweight-cartridge-0.0.1.jar --server.port=$OPENSHIFT_DIY_PORT --server.address=$OPENSHIFT_DIY_IP &
-#bash $OPENSHIFT_REPO_DIR/build/libs/openshift-gradle-spring-boot-lightweight-cartridge-0.0.1.jar &
-
-bash build/libs/openshift-gradle-spring-boot-lightweight-cartridge-0.0.1.jar &
+#bash gradlew -g /tmp build -x text
+bash build/libs/*.jar &
 
 sleep 30 # wait a little for spring bootstrapping...
