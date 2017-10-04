@@ -1,6 +1,7 @@
 .gradle
 .idea
 *.ipr
+*.iml
 *.iws
 npm*.log*
 node_modules
@@ -11,3 +12,9 @@ build/*
 !build/libs
 build/libs/*
 !build/libs/*.jar
+out/
+build/
+.DS_Store
+yarn.lock
+package-lock.json
+fabric8-gradle-plugin/

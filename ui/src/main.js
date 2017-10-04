@@ -2,7 +2,6 @@
  * Created by mak on 9/6/16.
  */
 import './assets';
-
 import React, { Component } from "react";
 import { render } from "react-dom";
 import { Router, Route, IndexRoute, browserHistory, Link } from 'react-router';
@@ -61,6 +60,3 @@ global.renderServer = function() {
 // const data = Java.from(data);
   return renderToString(<App><Main/></App>);
 };
-
-import $ from 'jquery';
-window.$ = $;

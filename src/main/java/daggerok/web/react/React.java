@@ -1,6 +1,7 @@
 package daggerok.web.react;
 
 import lombok.SneakyThrows;
+import lombok.experimental.FieldDefaults;
 import lombok.val;
 import org.springframework.stereotype.Component;
 
@@ -10,13 +11,17 @@ import javax.script.ScriptEngineManager;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+import static lombok.AccessLevel.PRIVATE;
+
 /**
  * Created by mak on 9/7/16.
  */
 @Component
+
+@FieldDefaults(level = PRIVATE)
 public class React {
 
-    private Invocable nashorn;
+    Invocable nashorn;
 
     @SneakyThrows
     @PostConstruct

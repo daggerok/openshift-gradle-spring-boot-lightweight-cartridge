@@ -1,30 +1,46 @@
+/*
 buildscript {
-  dependencies { repositories { mavenCentral() }
-    classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE'
+  repositories {
+    mavenLocal()
+  }
+  dependencies {
+    classpath group: "io.fabric8", name: "fabric8-gradle-plugin", version: "1.0-SNAPSHOT"
   }
 }
+*/
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'spring-boot'
+plugins {
+  id "java"
+  id "idea"
+  id "org.springframework.boot" version "1.5.7.RELEASE"
+}
+
+/*
+apply plugin: "fabric8"
+
+fabric8 {
+  profile = "my-test-profile"
+}
+*/
 
 jar {
-  baseName = 'openshift-gradle-spring-boot-lightweight-cartridge'
-  version = '0.0.1'
+  baseName = "openshift-gradle-spring-boot-lightweight-cartridge"
+  version = "0.0.1"
 }
 
 targetCompatibility = sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
+  mavenLocal()
   mavenCentral()
 }
 
 dependencies {
-  compile 'org.springframework.boot:spring-boot-starter-actuator',
-          'org.springframework.boot:spring-boot-starter-mustache',
-          'org.springframework.boot:spring-boot-devtools',
-          'org.projectlombok:lombok'
-  testCompile 'org.springframework.boot:spring-boot-starter-test'
+  compile "org.springframework.boot:spring-boot-starter-actuator",
+          "org.springframework.boot:spring-boot-starter-mustache",
+          "org.springframework.boot:spring-boot-devtools",
+          "org.projectlombok:lombok"
+  testCompile "org.springframework.boot:spring-boot-starter-test"
 }
 
 springBoot {
@@ -32,8 +48,13 @@ springBoot {
 }
 
 task ui(type: Exec) {
-  workingDir './ui'
+  workingDir "./ui"
   commandLine "npm", "run", "build"
 }
 
 build.shouldRunAfter ui
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "4.2.1"
+  distributionType = "ALL"
+}

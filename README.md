@@ -1,6 +1,17 @@
 openshift-gradle-spring-boot-lightweight-cartridge [![build](https://travis-ci.org/daggerok/openshift-gradle-spring-boot-lightweight-cartridge.svg?branch=master)](https://travis-ci.org/daggerok/openshift-gradle-spring-boot-lightweight-cartridge)
 ==================================================
 
+install fabric8 plugin locally
+
+```bash
+git clone https://github.com/Bisnode/fabric8-gradle-plugin.git
+cd fabric8-gradle-plugin/
+bash gradlew clean install
+cd ..
+```
+
+**old README**
+
 Runs [spring-boot](http://spring.io) on [OpenShift](https://www.openshift.com/) using downloadable cartridge support. 
 To install to app from the cli, use:
 

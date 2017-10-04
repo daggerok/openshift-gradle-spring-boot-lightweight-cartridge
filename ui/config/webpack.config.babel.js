@@ -5,6 +5,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractPlugin from 'extract-text-webpack-plugin';
 import autoprefixer from 'autoprefixer';
+import webpack from 'webpack';
 
 const include   = [path.resolve(process.cwd(), './src')];
 const assetsInclude   = [path.resolve(process.cwd(), './src/assets')];
@@ -29,7 +30,7 @@ const config = {
       include,
       loader: 'babel',
       query: {
-        presets: ['stage-0', 'es2015', 'react'],
+        presets: ['env', 'react', 'stage-0'],
         plugins: ['react-html-attrs', 'add-module-exports', 'transform-class-properties']
       }
     }, {
@@ -73,6 +74,11 @@ const config = {
     modulesDirectories: ['node_modules']
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery',
+    }),
     new ExtractPlugin('/[name].css', { allChunks: true }),
     new HtmlWebpackPlugin({ template: './src/assets/index.hbs' })
   ],
